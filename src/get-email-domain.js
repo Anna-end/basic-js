@@ -10,8 +10,13 @@ const { NotImplementedError } = require('../lib');
  * For the input 'prettyandsimple@example.com', the output should be 'example.com'
  *
  */
-function getEmailDomain(/* email */) {
-  throw new NotImplementedError('Not implemented');
+function getEmailDomain(email) {
+  const atCount = (email.match(/@/g) || []).length;
+    if (atCount !== 1) {
+        throw new Error('Invalid email format');
+    }
+    
+    return email.split('@')[1];
 }
 
 module.exports = {

@@ -13,8 +13,21 @@ const { NotImplementedError } = require('../lib');
  */
 
 function getCommonCharacterCount(/* s1, s2 */) {
-  // Remove line below and write your code here
-  throw new NotImplementedError('Not implemented');
+  const charCount = {};
+  for (let char of s1) {
+    charCount[char] = (charCount[char] || 0) + 1;
+  }
+   
+  let commonCount = 0;
+   
+  for (let char of s2) {
+    if (charCount[char] && charCount[char] > 0) {
+        commonCount++;
+        charCount[char]--; 
+      }
+  }
+    
+  return commonCount;
 }
 
 module.exports = {
